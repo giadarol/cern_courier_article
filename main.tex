@@ -61,7 +61,7 @@ with the goal of providing the functionality of MAD-X, SIXTRACK and PyHEADTAIL w
 % \end{itemize}
 
 Xsuite uses an orthogonal architecture: the codebase is split into independent functional blocks with clean, well-defined interfaces. The physics modules include Xtrack (particle tracking), Xpart (particle distributions), Xfields (electromagnetic fields from particle ensembles), Xcoll (particle–matter interaction and collimation), and Xwakes (wakefields and impedances). They sit atop two foundations: Xobjects, an interface to multi-core CPUs and Nvidia/AMD GPUs; and Xdeps, which manages parameter dependencies.
-These independent blocks lower codebase complexity so the toolkit scales as it grows. They also make the software easier to understand and contribute to, and Xsuite users frequently implement and upstream the capabilities they need.
+This modular structure lowers codebase complexity so the toolkit scales better as it grows. It also makes the software easier to understand and contribute to, and, as a result, Xsuite users frequently implement and upstream the capabilities they need.
 
 From the start, Xsuite development has been user-centric, delivering functionality in response to concrete needs and testing on real use cases. This mirrors ``Agile'' principles: close collaboration with users and incremental evolution driven by feedback.
 
