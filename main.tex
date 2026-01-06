@@ -33,20 +33,18 @@
 %     \item FCC pushing the boundaries needs new tools (maybe all future projects...)
 % \end{itemize}
 
-Particle accelerators are complex engineering marvels, so it is no surprise that for decades computer simulations have been key in their design, study, and operation. Historically, CERN has been at the forefront of development of the dedicated simulation tools, each created to investigate one of the many behaviours exhibited by charged particles as we accelerate and steer their trajectories in our accelerators.
+Particle accelerators are complex engineering marvels, so it is no surprise that for decades computer simulations have been central to their design, study, and operation. CERN has long been at the forefront of developing dedicated simulation tools, each created to investigate one of the many behaviours exhibited by charged particles as they are accelerated and steered.
 
-From the late 60s computer programs have been used to compute and design the orbit and optics of particle beams in CERN synchrotrons and related transfer and experimental lines. In the 80s, as part of the LEP collider design, the MAD program was developed and later evolved into MAD-X, which emerged as the de-facto standard in optics calculations and operation of accelerators at CERN during the LHC era.
+Since the late 60s, computer programs have been used to compute and design the orbit and optics of particle beams in CERN synchrotrons and related transfer and experimental lines. In the 80s, as part of the LEP collider design, the MAD program was developed and later evolved into MAD-X, which became the de-facto standard in optics calculations and accelerator operation at CERN during the LHC era.
 
-In parallel to the development of optics software, as computing power became more and more abundant, the idea of simulating individual trajectories of thousands or even millions of revolutions became of interest. This enabled more complex studies on beam-quality preservation, e.g. in presence of non-linear forces and magnet imperfections, which are known as Dynamic Aperture studies. At CERN, SIXTRACK was developed, inspired by an earlier endeavour created for the needs of HERA at DESY. In a similar fashion to MAD-X, SIXTRACK became the standard for the LHC era in this context.
+In parallel to optics software, increasing computing power enabled simulation of individual trajectories over thousands or even millions of revolutions. This opened the door to more complex studies on beam-quality preservation in the presence of non-linear forces and magnet imperfections, known as Dynamic Aperture studies. At CERN, SIXTRACK was developed, inspired by an earlier tool created for HERA at DESY. Like MAD-X, SIXTRACK became a standard for the LHC era in this context.
 
-Many more tools have also been developed over the years for the study of specific phenomena. For example HEADTAIL and its evolution PyHEADTAIL have been the workhorse to simulate transverse collective instabilities.
+Further tools were developed over the years for specific phenomena. For example, HEADTAIL and its evolution PyHEADTAIL have been the workhorses for simulating transverse collective instabilities. Collectively, these tools represent decades of expertise from which the accelerator community benefits every day.
 
-All of these tools represent decades of expertise and experience from which the accelerator community benefits every day.
-
-However, as studies became more sophisticated, several limitations of these legacy tools emerged. Studies of the interplay of different physical phenomena were challenging and slow due to ad-hoc interfaces between the different tools. It proved difficult to extend legacy programs to support new phenomena too, as they were not designed with extensibility in mind, and the experts familiar with the technologies behind them had moved on. In the meantime, the promise of performance leaps of GPU-accelerated workflows started looking increasingly desirable for accelerator physics as well.
+However, as studies became more sophisticated, several limitations of these legacy tools emerged. Investigating the interplay of different physical phenomena was challenging and slow due to ad-hoc interfaces between codes. Extending the programs to support new effects proved difficult because they were not designed with extensibility in mind, and many of the experts familiar with the original technologies had moved on. Meanwhile, the promise of GPU-accelerated workflows became increasingly attractive for accelerator physics.
 
 With these needs in mind, the Xsuite project launched in 2021, 
-with the goal of providing the functionality of MAD-X, SIXTRACK and PyHEADTAIL within a modern, easily extendable Python-based toolkit, with the support of GPU acceleration and collective effects built-in by design. Having access to accelerator design and simulation functionalities in Python implies that it is effortless to use them side-by-side with the plethora of other state-of-the-art scientific tools for data analysis, visualisation, optimization, Artificial Intelligence, etc. These advantages are especially important in the context of the future accelerator projects, which are pushing the boundaries of what had been so far possible in simulation, on one hand because of the requirements of advanced physics modeling, and on the other hand, because, as the scale and complexity of projects grow, it becomes mandatory to exploit state-of-the-art computing hardware to its fullest potential.
+with the goal of providing the functionality of MAD-X, SIXTRACK and PyHEADTAIL within a modern, easily extendable Python-based toolkit, with GPU acceleration and collective effects built in by design. Access to accelerator design and simulation tools in Python makes it effortless to use them alongside state-of-the-art scientific packages for data analysis, visualisation, optimization, artificial intelligence, and more. These advantages are especially important for future accelerator projects that push the boundaries of what has so far been possible in simulation, both because of the demands of advanced physics modeling and because the scale and complexity of projects require exploiting modern computing hardware to its fullest.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Approach and Capabilities
@@ -62,12 +60,12 @@ with the goal of providing the functionality of MAD-X, SIXTRACK and PyHEADTAIL w
 %     \item Physics packages
 % \end{itemize}
 
-Xsuite uses an orthogonal design architecture, meaning that the codebase is split as much as possible into independent functional blocks, with a focus on clean and well-defined interfaces between them. The physics modules of Xsuite include: Xtrack (the particle tracking engine), Xpart (used for generating particle distributions), Xfields (compute electromagnetic fields from particle ensembles), Xcoll (particle-matter interaction and collimation), and Xwakes (for computing wakefields and impedances). These sit atop a foundation consisting of two additional modules, Xobjects and Xdeps: the former acts as interface with various types hardware (such as multi-core CPUs as well as Nvidia and AMD GPUs), while the latter is used for managing parameter dependencies.
-These independent functional blocks help lower the complexity of the codebase, so that it scales better as the toolkit grows. It also makes it easier to understand and to contribute to source code. As a result, Xsuite users have often contributed to the development, implementing themselves the functionalities they needed. 
+Xsuite uses an orthogonal architecture: the codebase is split into independent functional blocks with clean, well-defined interfaces. The physics modules include Xtrack (particle tracking), Xpart (particle distributions), Xfields (electromagnetic fields from particle ensembles), Xcoll (particle–matter interaction and collimation), and Xwakes (wakefields and impedances). They sit atop two foundations: Xobjects, an interface to multi-core CPUs and Nvidia/AMD GPUs; and Xdeps, which manages parameter dependencies.
+These independent blocks lower codebase complexity so the toolkit scales as it grows. They also make the software easier to understand and contribute to, and Xsuite users frequently implement and upstream the capabilities they need.
 
-Xsuite's development has been from the very beginning user-centric, focusing on implementing functionalities in response to users' needs, benefiting from their involvement, and testing on their concrete use cases. This closely corresponds to the ``Agile'' development principles: the focus is on collaboration with users, with the software evolving incrementally in response to user's feedback and needs.
+From the start, Xsuite development has been user-centric, delivering functionality in response to concrete needs and testing on real use cases. This mirrors ``Agile'' principles: close collaboration with users and incremental evolution driven by feedback.
 
-Thanks to an investment in continuous testing, Xsuite can afford a fast release cycle with new versions coming out multiple times a month. Every night, comprehensive tests run automatically to ensure that, on all supported computing platforms, Xsuite performs as it should, and that no issues have been inadvertently introduced either by the developers, or as a result of third party dependencies. The automatic test suite comprises both small unit tests and an array of real-life simulation scenarios, greatly increasing the confidence both in the development process, as well as all of the results obtained in simulation studies based on Xsuite.
+Thanks to sustained investment in continuous testing, Xsuite supports a fast release cycle with new versions appearing multiple times per month. Every night, comprehensive tests run automatically to ensure that on all supported computing platforms Xsuite behaves as expected and that regressions from either the developers or third-party dependencies are caught early. The test suite combines small unit tests with real-life simulation scenarios, boosting confidence in both the development process and the results obtained from Xsuite-based studies.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -94,13 +92,13 @@ Thanks to an investment in continuous testing, Xsuite can afford a fast release 
 % \end{itemize}
 
 
-A key strength of Xsuite lies in its ability to interface naturally with other simulation codes. This makes it possible to build detailed and realistic models that combine multiple physical effects. For example, integration with FLUKA and BDSIM-Geant4 enables in-depth studies of particle–matter interactions across the accelerator environment. In parallel, interfaces with RF-track and BLonD extend simulations to cover tracking in complex electromagnetic fields and in the presence of RF feedback systems.
+A key strength of Xsuite is its ability to interface naturally with other simulation codes. This makes it possible to build detailed, realistic models that combine multiple physical effects. Integration with FLUKA and BDSIM-Geant4, for example, enables in-depth studies of particle–matter interactions across the accelerator environment, while interfaces with RF-track and BLonD extend simulations to include complex electromagnetic fields and RF feedback systems.
 
-Xsuite has been adopted as the simulation tool for all synchrotrons operating at CERN, as well as for upgrade projects and design studies, and has been embraced by other laboratories including GSI, HIT, MedAustron, DESY, BESSY in Europe, Fermilab and BNL in the US, the Canadian Light Source, JPARC and KEK in Japan. An indication of Xsuite’s rapidly growing adoption across the accelerator community is the steady rise in mentions in recent IPAC proceedings — now surpassing those of MAD-X, which for years has been among the most broadly adopted tools in the community — as shown in figure.
+Xsuite is now the simulation tool for all synchrotrons operating at CERN, as well as for upgrade projects and design studies. It has also been embraced by laboratories including GSI, HIT, MedAustron, DESY, and BESSY in Europe; Fermilab and BNL in the US; the Canadian Light Source; and JPARC and KEK in Japan. A clear sign of Xsuite’s growing adoption is the steady rise in mentions in recent IPAC proceedings—now surpassing those of MAD-X, which for years was among the most broadly adopted tools in the community—as shown in Fig.~\ref{fig:ipac_citations}.
 
-An important driver of Xsuite’s growing success is its open-source nature. Being freely available encourages collaboration, transparency, and innovation, and has led to rapid adoption by accelerator laboratories around the world. Many of these institutions now rely on Xsuite in their design and operation workflows, contributing back improvements and helping to shape the tool’s evolution. 
+Its open-source nature is an important driver of Xsuite’s success. Being freely available encourages collaboration, transparency, and innovation, and has led to rapid adoption by accelerator laboratories around the world. Many of these institutions now rely on Xsuite in their design and operation workflows, contributing improvements and helping to shape the tool’s evolution. 
 
-Beyond research labs, Xsuite has also made its way into the classroom. It is now being taught at the main accelerator schools, including the CERN Accelerator School (CAS), the Joint Universities Accelerator School (JUAS), and the U.S. Particle Accelerator School (USPAS). This is helping to train the next generation of accelerator physicists with hands-on experience using tools that are directly applicable to the machines they will go on to build and operate.
+Beyond research labs, Xsuite has also made its way into the classroom. It is taught at the main accelerator schools, including the CERN Accelerator School (CAS), the Joint Universities Accelerator School (JUAS), and the U.S. Particle Accelerator School (USPAS), giving the next generation of accelerator physicists hands-on experience with tools directly applicable to the machines they will go on to build and operate.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -112,12 +110,12 @@ Beyond research labs, Xsuite has also made its way into the classroom. It is now
 
 Following the great success of the integrated LEP and LHC program, the next highest energy collider studies are looking towards lepton colliders prior to larger hadron machines, such as the FCC study at CERN, or CEPC study at IHEP.
 
-The current state-of-the-art high-luminosity lepton collider is SuperKEKB, located at KEK, Tsukuba Japan.
-SuperKEKB holds the current world record for luminosity (a measure of the data rate a collider can produce).
-A three kilometre electron-positron collider, SuperKEKB sets the benchmark which the next generation of machines continue to look to.
-As SuperKEKB strives to realise their ambitious target parameters, simulation developments have been key to understand observations and optimize the machine configuration.
-The effort to describe SuperKEKB has led to not only developments of the Xsuite code, but further developments of the collaborative links between CERN and our colleagues at KEK.
-Supported strongly by international schemes, such as the European Union’s Europe America Japan Accelerator Development Exchange (EAJADE) scheme, we are benefitting greatly from the increase in knowledge sharing between our organisations.
+The current state-of-the-art high-luminosity lepton collider is SuperKEKB, located at KEK in Tsukuba, Japan.
+SuperKEKB holds the world record for luminosity—a measure of the data rate a collider can produce.
+This three-kilometre electron–positron collider sets the benchmark to which the next generation of machines aspire.
+As SuperKEKB strives to realise its ambitious target parameters, simulation developments have been key to understanding observations and optimising the machine configuration.
+Work to model SuperKEKB has driven developments of the Xsuite code and strengthened collaboration between CERN and KEK.
+Supported strongly by international schemes, such as the European Union’s Europe America Japan Accelerator Development Exchange (EAJADE), we are benefiting greatly from the increase in knowledge sharing between our organisations.
 
 
 
@@ -129,16 +127,16 @@ Supported strongly by international schemes, such as the European Union’s Euro
 \end{figure}
 
 
-One of Xsuite’s defining features is its modular architecture, which allows different simulation modules to be seamlessly integrated. This modularity enables the study of complex scenarios where multiple beam dynamics effects must be considered simultaneously—a capability that is becoming increasingly essential, for example, in the context of the FCC-ee design.
+One of Xsuite’s defining features is its modular architecture, which allows different simulation modules to be seamlessly integrated. This modularity enables the study of complex scenarios where multiple beam-dynamics effects must be considered simultaneously—a capability that is becoming increasingly essential, for example, in the context of the FCC-ee design.
 In this context, a wide range of phenomena must be accounted for: accurate modeling of thousands of magnetic and RF elements,
 synchrotron radiation emission, magnet strength tapering to follow local beam energy, beam–beam interactions, beamstrahlung, scattering with collimators, and more. Xsuite provides the framework to simulate these effects concurrently, in a self-consistent and flexible way.
-As an example, the figure below shows the distribution of beam losses around the FCC-ee ring as obtained from integrated simulations performed with Xsuite, in the presence of all relevant physical effects mentioned above.
+As an example, the figure below shows the distribution of beam losses around the FCC-ee ring as obtained from integrated simulations performed with Xsuite in the presence of all relevant physical effects mentioned above.
 Such studies are crucial for validating that the machine can operate safely while delivering its target luminosity to the experiments. They provide a deeper understanding of how various physical effects interact and help guide key design decisions early in the project lifecycle.
 
 \subsection*{Multispecies simulations - application to hadron therapy}
 
-Particle accelerators typically only accelerate one type of particle at a time: a ‘single species’. Nevertheless as beams are circulating, ``secondary particles' can be generated when beam particles hit the surface of beam pipes or collimators. Modeling the behavior of these secondary particles is important to protect sensitive accelerator elements like superconducting magnets and cavities as well as experimental detectors. For this purpose Xsuite has been designed to support simultaneous tracking of different particle species. This feature is regularly used for collimation studies for the LHC complex and for the FCC design, and turns out to be useful also for advanced studies in the field of hadron therapy.
-Two particle species of great interest for hadron therapy are Carbon and Helium. It turns out that the properties of such species align just right to allow them to propagate at the same time in the same ring. Studies by a collaboration at MedAustron in Austria are working on using beams made of a mix of the two species for ``online range verification'' during the patient irradiation. In practice, while the accelerated carbon ions are deposited in the area to be treated, for example a tumor, the helium ions go through the patient and can be used for precise localization of the beam. The research team is using Xsuite to simulate and optimize this novel therapy technique.
+Particle accelerators typically only accelerate one type of particle at a time: a “single species”. Nevertheless as beams are circulating, “secondary particles” can be generated when beam particles hit the surface of beam pipes or collimators. Modeling the behavior of these secondary particles is important to protect sensitive accelerator elements like superconducting magnets and cavities as well as experimental detectors. For this purpose Xsuite has been designed to support simultaneous tracking of different particle species. This feature is regularly used for collimation studies for the LHC complex and for the FCC design, and it is also proving valuable for advanced studies in hadron therapy.
+Two particle species of great interest for hadron therapy are carbon and helium. Their properties align just right to allow them to propagate at the same time in the same ring. Studies by a collaboration at MedAustron in Austria are working on using beams made of a mix of the two species for “online range verification” during patient irradiation. In practice, while the accelerated carbon ions are deposited in the area to be treated, for example a tumor, the helium ions pass through the patient and can be used for precise localization of the beam. The research team is using Xsuite to simulate and optimize this novel therapy technique.
 
 \begin{figure}[htb]
     \centering
@@ -177,10 +175,10 @@ in terms of synergies across different projects, shared expertise, community sup
 and collective validation of results.
 
 Work is now focused on bringing Xsuite into the control room, in particular integrating the
-toolkit with the CERN Layout Database and the accelerators control system, 
+toolkit with the CERN Layout Database and the accelerator control system, 
 allowing the operation teams to use Xsuite to analyze, generate and manipulate
-accelerator configurations, based on the simulation models.
-Early control-room tests have been very positive - including a Machine Development session where a full proof-of-concept LHC cycle was designed entirely with Xsuite and tested in the machine. Beyond the practical advantages of a modern, supported toolchain, this also opens opportunities for tighter synergy and mobility between teams designing future machines and those operating today’s accelerators.
+accelerator configurations based on the simulation models.
+Early control-room tests have been very positive—including a Machine Development session where a full proof-of-concept LHC cycle was designed entirely with Xsuite and tested in the machine. Beyond the practical advantages of a modern, supported toolchain, this also opens opportunities for tighter synergy and mobility between teams designing future machines and those operating today’s accelerators.
 
 
 
@@ -191,7 +189,7 @@ Early control-room tests have been very positive - including a Machine Developme
 \end{figure}
 
 \section*{Get involved}
-If Xsuite is relevant for your work, go ahead and give it a try—the team is eager to hear your feedback.
+If Xsuite is relevant for your work, give it a try—the team is eager to hear your feedback.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TODO and References
