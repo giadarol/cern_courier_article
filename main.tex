@@ -118,7 +118,7 @@ Work to model SuperKEKB has driven developments of the Xsuite code and strengthe
 Supported strongly by international schemes, such as the European Union’s Europe America Japan Accelerator Development Exchange (EAJADE), we are benefiting greatly from the increase in knowledge sharing between our organisations.
 
 
-One of Xsuite’s defining features is its modular architecture, which allows different simulation modules to be seamlessly integrated. This modularity enables the study of complex scenarios where multiple beam-dynamics effects must be considered simultaneously—a capability that is becoming increasingly essential, for example, in the context of the FCC-ee design.
+A defining feature of Xsuite is that its components plug together cleanly, enabling seamless integration of different simulation blocks. This makes it practical to study complex scenarios with multiple beam-dynamics effects at once—a capability that is becoming increasingly essential, for example, in the context of the FCC-ee design.
 In this context, a wide range of phenomena must be accounted for: accurate modeling of thousands of magnetic and RF elements,
 synchrotron radiation emission, magnet strength tapering to follow local beam energy, beam–beam interactions, beamstrahlung, scattering with collimators, and more. Xsuite provides the framework to simulate these effects concurrently, in a self-consistent and flexible way.
 As an example, the figure below shows the distribution of beam losses around the FCC-ee ring as obtained from integrated simulations performed with Xsuite in the presence of all relevant physical effects mentioned above.
@@ -175,6 +175,8 @@ Early control-room tests have been very positive—including a Machine Developme
 \section*{Get involved}
 If Xsuite is relevant for your work, give it a try—the team is eager to hear your feedback.
 
+\clearpage
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TODO and References
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -188,25 +190,26 @@ If Xsuite is relevant for your work, give it a try—the team is eager to hear y
     \item \href{https://codimd.web.cern.ch/s/BrhfxadhH}{Notes for the JAP presentation have a section about past BD software}
 \end{itemize}
 
-\begin{figure}[htb]
+\begin{figure}[tb]
     \centering
     \includegraphics[width=0.9\linewidth]{xsuite_logo_alpha.eps}
     \label{fig:xsuite_logo}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[tb]
     \centering
     \includegraphics[width=0.9\linewidth]{ipac_citations.png}
     \caption{Mentions of Xsuite packages in IPAC proceedings over time, compared with MAD-X.}
     \label{fig:ipac_citations}
 \end{figure}
 
-\begin{center}
+\begin{figure}[tb]
+    \centering
     \includegraphics[width=0.9\linewidth]{all4.png}
-    \captionof{figure}{Visualisation of the beam envelopes (at $3\sigma$ with 6.8 TeV energy and $\beta^* = 30 \textrm{ cm}$) including the apertures around ATLAS, ALICE, CMS, LHCb (left to right, top to bottom), which was generated using Xsuite. Scale of the longitudinal to transverse axes: 3m : 1cm.}
-\end{center}
+    \caption{Visualisation of the beam envelopes (at $3\sigma$ with 6.8 TeV energy and $\beta^* = 30 \textrm{ cm}$) including the apertures around ATLAS, ALICE, CMS, LHCb (left to right, top to bottom), which was generated using Xsuite. Scale of the longitudinal to transverse axes: 3m : 1cm.}
+\end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[tb]
     \centering
     \includegraphics[width=0.9\linewidth]{fcc_loss_map.png}
     \caption{Example loss map from an integrated FCC-ee simulation produced with Xsuite.}
