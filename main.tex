@@ -35,18 +35,18 @@
 
 Particle accelerators are complex engineering marvels, so it is no surprise that for decades computer simulations have been key in their design, study, and operation. Historically, CERN has been at the forefront of development of the dedicated simulation tools, each created to investigate one of the many behaviours exhibited by charged particles as we accelerate and steer their trajectories in our accelerators.
 
-From the late 60s computer programs have been used to compute and design the orbit and optics of particle beams in CERN sychrotrons and related transfer and experimental lines. In the 80s, as part of the LEP collider design, the MAD program was develope and later evolved into MAD-X with emerged as the de-facto standard in optics calculations and operation of accelerators at CERN during the LHC era.
+From the late 60s computer programs have been used to compute and design the orbit and optics of particle beams in CERN synchrotrons and related transfer and experimental lines. In the 80s, as part of the LEP collider design, the MAD program was developed and later evolved into MAD-X, which emerged as the de-facto standard in optics calculations and operation of accelerators at CERN during the LHC era.
 
 In parallel to the development of optics software, as computing power became more and more abundant, the idea of simulating individual trajectories of thousands or even millions of revolutions became of interest. This enabled more complex studies on beam-quality preservation, e.g. in presence of non-linear forces and magnet imperfections, which are known as Dynamic Aperture studies. At CERN, SIXTRACK was developed, inspired by an earlier endeavour created for the needs of HERA at DESY. In a similar fashion to MAD-X, SIXTRACK became the standard for the LHC era in this context.
 
-Many more tools have also been developed over the years for the study of specific phenomena. For example HEADTAIL and its evolution PyHEADTAIL have been the workhorse simulate transverse collective instabilities.
+Many more tools have also been developed over the years for the study of specific phenomena. For example HEADTAIL and its evolution PyHEADTAIL have been the workhorse to simulate transverse collective instabilities.
 
 All of these tools represent decades of expertise and experience from which the accelerator community benefits every day.
 
 However, as studies became more sophisticated, several limitations of these legacy tools emerged. Studies of the interplay of different physical phenomena were challenging and slow due to ad-hoc interfaces between the different tools. It proved difficult to extend legacy programs to support new phenomena too, as they were not designed with extensibility in mind, and the experts familiar with the technologies behind them had moved on. In the meantime, the promise of performance leaps of GPU-accelerated workflows started looking increasingly desirable for accelerator physics as well.
 
 With these needs in mind, the Xsuite project launched in 2021, 
-with the goal of providing the functionality of MAD-X, SIXTRACK and PyHEADTAIL within a modern, easily extendable Python-based toolkit, with the support of GPU acceleration and collective effects built-in by design. Having access to accelerator design and simulation functionalities in Python implies that it is effortless to use them side-by-side with the plethora of other state-of-the-art scientific tools for data analysis, visualisation, optimization, Artificial Intelligence, etc. These advantages are especially important in the context of the future accelerator projects, which are pushing the boundaries of what had been so far possible in simulation, on one hand because of the requrements advanced physics modeling, and on the other hand, because, as the scale and complexity of projects grow, it becomes mandatory exploit state-of-art computing hardware to its fullest potential.
+with the goal of providing the functionality of MAD-X, SIXTRACK and PyHEADTAIL within a modern, easily extendable Python-based toolkit, with the support of GPU acceleration and collective effects built-in by design. Having access to accelerator design and simulation functionalities in Python implies that it is effortless to use them side-by-side with the plethora of other state-of-the-art scientific tools for data analysis, visualisation, optimization, Artificial Intelligence, etc. These advantages are especially important in the context of the future accelerator projects, which are pushing the boundaries of what had been so far possible in simulation, on one hand because of the requirements of advanced physics modeling, and on the other hand, because, as the scale and complexity of projects grow, it becomes mandatory to exploit state-of-the-art computing hardware to its fullest potential.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Approach and Capabilities
@@ -62,10 +62,10 @@ with the goal of providing the functionality of MAD-X, SIXTRACK and PyHEADTAIL w
 %     \item Physics packages
 % \end{itemize}
 
-Xsuite uses an orthogonal design architecture, meaning that the codebase is split as much as possible into independent functional blocks, with a focus on clean and well-defined interfaces between them. The physics modules of Xsuite include: Xtrack (the particle tracking engine), Xpart (used for generating particle distributions), Xfields (compute electromagnetic fields from particle ensembles), Xcoll (particle-matter interaction and collimation), and Xwakes (for computing wakefields and impedances). These sit atop a foundation consisting of two additional modukes, Xobjects and Xdeps: the former acts as interface with various types hardware (such as multi-core CPUs as well as Nvidia and AMD GPUs), while the latter is used for managing parameter dependencies.
-These independent functional blocks help lower the complexity of the codebase, so that it scales better as the toolkit grows. It also makes it is easier to understand and to contribute to source code. As a result, Xsuite users have often contributed to the development, implementing themselves the funcionalities they needed. 
+Xsuite uses an orthogonal design architecture, meaning that the codebase is split as much as possible into independent functional blocks, with a focus on clean and well-defined interfaces between them. The physics modules of Xsuite include: Xtrack (the particle tracking engine), Xpart (used for generating particle distributions), Xfields (compute electromagnetic fields from particle ensembles), Xcoll (particle-matter interaction and collimation), and Xwakes (for computing wakefields and impedances). These sit atop a foundation consisting of two additional modules, Xobjects and Xdeps: the former acts as interface with various types hardware (such as multi-core CPUs as well as Nvidia and AMD GPUs), while the latter is used for managing parameter dependencies.
+These independent functional blocks help lower the complexity of the codebase, so that it scales better as the toolkit grows. It also makes it easier to understand and to contribute to source code. As a result, Xsuite users have often contributed to the development, implementing themselves the functionalities they needed. 
 
-Xsuite's development has been from the very beginning  user-centric, focusing on implementing functionalities in response to users' needs, benefiting from their involvement, and testing on their concrete use cases. This closely corresponds to the ``Agile'' development principles: the focus is on collaboration with users, with the software evolving incrementally in response to user's feedback and needs.
+Xsuite's development has been from the very beginning user-centric, focusing on implementing functionalities in response to users' needs, benefiting from their involvement, and testing on their concrete use cases. This closely corresponds to the ``Agile'' development principles: the focus is on collaboration with users, with the software evolving incrementally in response to user's feedback and needs.
 
 Thanks to an investment in continuous testing, Xsuite can afford a fast release cycle with new versions coming out multiple times a month. Every night, comprehensive tests run automatically to ensure that, on all supported computing platforms, Xsuite performs as it should, and that no issues have been inadvertently introduced either by the developers, or as a result of third party dependencies. The automatic test suite comprises both small unit tests and an array of real-life simulation scenarios, greatly increasing the confidence both in the development process, as well as all of the results obtained in simulation studies based on Xsuite.
 
@@ -127,7 +127,7 @@ Beyond research labs, Xsuite has also made its way into the classroom. It is now
 % \end{itemize}
 
 Particle accelerators typically only accelerate one type of particle at a time: a ‘single species’. Nevertheless as beams are circulating, ``secondary particles' can be generated when beam particles hit the surface of beam pipes or collimators. Modeling the behavior of these secondary particles is important to protect sensitive accelerator elements like superconducting magnets and cavities as well as experimental detectors. For this purpose Xsuite has been designed to support simultaneous tracking of different particle species. This feature is regularly used for collimation studies for the LHC complex and for the FCC design, and turn out to be useful also for advanced studies in the field of hadron therapy.
-Two particles species of great interest for hadron therapy are Carbon and Helium. It turns out that the properties of such species align just right to allow them to propagate at the same time in the same ring. Studies by a collaboration at MedAustron in Austria are working on using beams made of a mix of the two species for ``online range verification'' during the patient irradiation. In practice, while the accelerated carbon ions are deposited in the are to be treated, for example a tumor, the helium ions go through the patient and can be used for precise localization of the beam. The research team is using Xsuite to simulated and optimize this novel therapy technique.
+Two particle species of great interest for hadron therapy are Carbon and Helium. It turns out that the properties of such species align just right to allow them to propagate at the same time in the same ring. Studies by a collaboration at MedAustron in Austria are working on using beams made of a mix of the two species for ``online range verification'' during the patient irradiation. In practice, while the accelerated carbon ions are deposited in the area to be treated, for example a tumor, the helium ions go through the patient and can be used for precise localization of the beam. The research team is using Xsuite to simulate and optimize this novel therapy technique.
 
 \begin{figure}[htb]
     \centering
@@ -147,7 +147,7 @@ Two particles species of great interest for hadron therapy are Carbon and Helium
 % \textbf{300 words (currently 250)}
 
 % \begin{itemize}
-%     \item Modelling of novel accelerators represents it's own challenges
+%     \item Modelling of novel accelerators represents its own challenges
 %     \item Next priority is ee (no ee at CERN at the moment)- model something that exists
 %     \item Mentioned at start the needs of FCC driving development, but this isn't the only novel machine
 %     \item More collaboration with Japan under EAJADE and secondments
@@ -157,18 +157,18 @@ Two particles species of great interest for hadron therapy are Carbon and Helium
 % \end{itemize}
 
 It is an exciting time in the world of accelerator physics.
-In the coming years, many design projects are seeking approval, several new accelerators are expected to power on for the first time and the current top-of-the line machines continue to strive for new heights.
+In the coming years, many design projects are seeking approval, several new accelerators are expected to power on for the first time and the current top-of-the-line machines continue to strive for new heights.
 With the great success of the LHC, and the move towards the High-Luminosity LHC, CERN is setting the benchmark for hadron colliders.
-Following the great success of the integreated LEP and LHC program, the next highest energy collider studies are looking towards lepton colliders prior to larger hadron machines, such as the FCC study at CERN, or CEPC study at IHEP.
+Following the great success of the integrated LEP and LHC program, the next highest energy collider studies are looking towards lepton colliders prior to larger hadron machines, such as the FCC study at CERN, or CEPC study at IHEP.
 
 The current state-of-the-art lepton collider is SuperKEKB, located at KEK, Tsukuba Japan.
 SuperKEKB holds the current world record for luminosity (a measure of the data rate a collider can produce).
 A three kilometre electron-positron collider, SuperKEKB sets the benchmark which the next generation of machines continue to look to.
 As SuperKEKB strives to realise their ambitious target parameters, simulation developments have been key.
-A fabulously challenging machine, the effort to describe SuperKEKB has lead to not only developments of the Xsuite code, but further developments of the collaborative links between CERN and our colleagues at KEK.
+A fabulously challenging machine, the effort to describe SuperKEKB has led to not only developments of the Xsuite code, but further developments of the collaborative links between CERN and our colleagues at KEK.
 Supported strongly by international schemes, such as the European Union’s Europe America Japan Accelerator Development Exchange scheme, we are benefitting greatly from the increase in knowledge sharing between our organisations.
 
-On the technical front, SuperKEKB represents a key challenge due to the overlap of it’s experimental solenoid (used by the detectors to enable the identification of particles) and the final focus quadrupoles (used to squeeze the beams down to heights on the nano-metre scale)!
+On the technical front, SuperKEKB represents a key challenge due to the overlap of its experimental solenoid (used by the detectors to enable the identification of particles) and the final focus quadrupoles (used to squeeze the beams down to heights on the nano-metre scale)!
 The implementation of this feature has opened new avenues for the study of future machines like the FCC also.
 
 
