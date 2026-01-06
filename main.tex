@@ -51,7 +51,7 @@ with the goal of providing the functionality of MAD-X, SIXTRACK and PyHEADTAIL w
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Approach and Capabilities
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Approach and Capabilities}
+\section*{Approach and Capabilities}
 % \textbf{Szymon}
 % \textbf{400 words}
 
@@ -100,67 +100,16 @@ Xsuite has been adopted as the simulation tool for all synchrotrons operating at
 
 An important driver of Xsuite’s growing success is its open-source nature. Being freely available encourages collaboration, transparency, and innovation, and has led to rapid adoption by accelerator laboratories around the world. Many of these institutions now rely on Xsuite in their design and operation workflows, contributing back improvements and helping to shape the tool’s evolution. 
 
-% \textbf{ADD A WORD ON IPAC CITATION, mention applications outside CERN}
-
 Beyond research labs, Xsuite has also made its way into the classroom. It is now being taught at the main accelerator schools, including the CERN Accelerator School (CAS), the Joint Universities Accelerator School (JUAS), and the U.S. Particle Accelerator School (USPAS). This is helping to train the next generation of accelerator physicists with hands-on experience using tools that are directly applicable to the machines they will go on to build and operate.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Novel applications
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Application examples}
+\section*{Application examples}
 
-\subsection{Multispecies simulations for collimation and hadron therapy}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Multispecies Tracking
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \subsection{Multispecies Tracking}
-% \textbf{Jack}
-% \textbf{300 words (currently ~250)}
+\subsection*{High-luminosity lepton colliders}
 
-% \begin{itemize}
-%     \item Standard is one type of particle in a machine
-%     \item With the exception of secondary particles....
-%     \item Born out of needs of collimation, now support multi-species tracking
-%     \item Other uses for two ions?
-%     \item Introduce PIMMS
-%     \item Slight background of medical application
-%     \item 2 Ions species in on machine and why this is beneficial
-% \end{itemize}
-
-Particle accelerators typically only accelerate one type of particle at a time: a ‘single species’. Nevertheless as beams are circulating, ``secondary particles' can be generated when beam particles hit the surface of beam pipes or collimators. Modeling the behavior of these secondary particles is important to protect sensitive accelerator elements like superconducting magnets and cavities as well as experimental detectors. For this purpose Xsuite has been designed to support simultaneous tracking of different particle species. This feature is regularly used for collimation studies for the LHC complex and for the FCC design, and turn out to be useful also for advanced studies in the field of hadron therapy.
-Two particle species of great interest for hadron therapy are Carbon and Helium. It turns out that the properties of such species align just right to allow them to propagate at the same time in the same ring. Studies by a collaboration at MedAustron in Austria are working on using beams made of a mix of the two species for ``online range verification'' during the patient irradiation. In practice, while the accelerated carbon ions are deposited in the area to be treated, for example a tumor, the helium ions go through the patient and can be used for precise localization of the beam. The research team is using Xsuite to simulate and optimize this novel therapy technique.
-
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=0.9\linewidth]{medaustron.png}
-    \includegraphics[width=0.9\linewidth]{medaustron2.png}
-    \caption{Co-propagating Carbon and Helium ions in the Proton Ion Medical Machine Study lattice.
-    Under study at MedAustron, aiming for use in radiotherapy treatment, where the carbon will deposit in the tumours, and the helium pass through for imaging.
-    arXiv:2501.12797v1}
-    \label{fig:pimms_figure}
-\end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SuperKEKB
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Novel Accelerators}
-% \textbf{Jack}
-% \textbf{300 words (currently 250)}
-
-% \begin{itemize}
-%     \item Modelling of novel accelerators represents its own challenges
-%     \item Next priority is ee (no ee at CERN at the moment)- model something that exists
-%     \item Mentioned at start the needs of FCC driving development, but this isn't the only novel machine
-%     \item More collaboration with Japan under EAJADE and secondments
-%     \item Introduce SuperKEKB (current highest luminosity e+e-)
-%     \item Challenges of SuperKEKB required improvements to Xsuite
-%     \item Overlapping elements in the Solenoid field
-% \end{itemize}
-
-% It is an exciting time in the world of accelerator physics.
-% In the coming years, many design projects are seeking approval, several new accelerators are expected to power on for the first time and the current top-of-the-line machines continue to strive for new heights.
-% With the great success of the LHC, and the move towards the High-Luminosity LHC, CERN is setting the benchmark for hadron colliders.
 Following the great success of the integrated LEP and LHC program, the next highest energy collider studies are looking towards lepton colliders prior to larger hadron machines, such as the FCC study at CERN, or CEPC study at IHEP.
 
 The current state-of-the-art high-luminosity lepton collider is SuperKEKB, located at KEK, Tsukuba Japan.
@@ -178,14 +127,7 @@ Supported strongly by international schemes, such as the European Union’s Euro
     \caption{SuperKEKB Figure}
     \label{fig:skekb_figure}
 \end{figure}
-    
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Combined Effect Simulations
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% JS: I'm not sure about this title, as is true of SKEKB etc too, but perhaps still works
-\subsection{Combined effect simulations}
-% \textbf{Giacomo}
-% \textbf{300 words}
+
 
 One of Xsuite’s defining features is its modular architecture, which allows different simulation modules to be seamlessly integrated. This modularity enables the study of complex scenarios where multiple beam dynamics effects must be considered simultaneously—a capability that is becoming increasingly essential, for example, in the context of the FCC-ee design.
 In this context, a wide range of phenomena must be accounted for: accurate modeling of thousands od magnetic and RF elements,
@@ -193,12 +135,32 @@ synchrotron radiation emission, magnet strength tapering to follow local beam en
 As an example, the figure below shows the distribution of beam losses around the FCC-ee ring as obtained from integrated simulations performed with Xsuite, in the presence of all relevant physical effects mentioned above.
 Such studies are crucial for validating that the machine can operate safely while delivering its target luminosity to the experiments. They provide a deeper understanding of how various physical effects interact and help guide key design decisions early in the project lifecycle.
 
+\subsection*{Multispecies simulations - application to hadron therapy}
+
+Particle accelerators typically only accelerate one type of particle at a time: a ‘single species’. Nevertheless as beams are circulating, ``secondary particles' can be generated when beam particles hit the surface of beam pipes or collimators. Modeling the behavior of these secondary particles is important to protect sensitive accelerator elements like superconducting magnets and cavities as well as experimental detectors. For this purpose Xsuite has been designed to support simultaneous tracking of different particle species. This feature is regularly used for collimation studies for the LHC complex and for the FCC design, and turn out to be useful also for advanced studies in the field of hadron therapy.
+Two particle species of great interest for hadron therapy are Carbon and Helium. It turns out that the properties of such species align just right to allow them to propagate at the same time in the same ring. Studies by a collaboration at MedAustron in Austria are working on using beams made of a mix of the two species for ``online range verification'' during the patient irradiation. In practice, while the accelerated carbon ions are deposited in the area to be treated, for example a tumor, the helium ions go through the patient and can be used for precise localization of the beam. The research team is using Xsuite to simulate and optimize this novel therapy technique.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.9\linewidth]{medaustron.png}
+    \includegraphics[width=0.9\linewidth]{medaustron2.png}
+    \caption{Co-propagating Carbon and Helium ions in the Proton Ion Medical Machine Study lattice.
+    Under study at MedAustron, aiming for use in radiotherapy treatment, where the carbon will deposit in the tumours, and the helium pass through for imaging.
+    arXiv:2501.12797v1}
+    \label{fig:pimms_figure}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SuperKEKB
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 % Figure
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Towards Operation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Towards Operation}
+\section*{Towards Operation}
 % \textbf{Szymon}
 % \textbf{150 words}
 % \begin{itemize}
@@ -228,7 +190,7 @@ Early control-room tests have been very positive - including a Machine Developme
     \label{fig:xsuite_logo}
 \end{figure}
 
-\subsection*{Get involved}
+\section*{Get involved}
 If Xsuite is relevant for your work, go ahead and give it a try—the team is eager to hear your feedback.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
